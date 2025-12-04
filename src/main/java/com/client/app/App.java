@@ -36,6 +36,10 @@ public class App {
       while (!line.equals("exit")) {
         line = scanner.nextLine();
         outchan.println(line);
+        System.out.print("\033[1A");
+        System.out.print("\033[2K");
+        System.out.print("\r");
+        System.out.flush();
       }
 
       try {
