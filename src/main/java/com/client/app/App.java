@@ -1,10 +1,10 @@
 package com.client.app;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -18,7 +18,7 @@ public class App {
       System.out.println("Connected to server");
       InputStream is = socket.getInputStream();
       BufferedReader bs = new BufferedReader(new InputStreamReader(is));
-      DataOutputStream outchan = new DataOutputStream(socket.getOutputStream());
+      PrintWriter outchan = new PrintWriter(socket.getOutputStream(), true);
 
       new Thread(() -> {
         try {
@@ -35,7 +35,7 @@ public class App {
       String line = "";
       while (!line.equals("exit")) {
         line = scanner.nextLine();
-        outchan.writeChars(line);
+        outchan.println(line);
       }
 
       try {
