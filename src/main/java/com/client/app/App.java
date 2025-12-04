@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class App {
   public static void main(String[] args) {
-    String address = "localhost";
-    int port = 5156;
+    String address = args[0];
+    int port = Integer.parseInt(args[1]);
     Socket socket;
     try {
       socket = new Socket(address, port);
